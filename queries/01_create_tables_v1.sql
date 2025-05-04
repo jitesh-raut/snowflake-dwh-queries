@@ -1,4 +1,4 @@
-CREATE OR REPLACE TABLE employees_v2 (
+CREATE OR REPLACE TABLE employees_v3 (
      id INT,
      name STRING,
      department STRING,
