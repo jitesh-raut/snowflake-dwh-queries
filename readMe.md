@@ -5,27 +5,38 @@ This guide walks you through setting up a local development environment to write
 ## Step-by-Step Setup
 
 ### 1. Setup Repository in VS Code
+1. **Install VS Code**
+
+    1. **Go to the official site**:
+   Visit [https://code.visualstudio.com](https://code.visualstudio.com)
+
+    2. **Download the installer**:
+   Click on the **"Download for Windows"** button to get the `.exe` installer.
+
+    3. **Run the installer**:
+   Double-click the downloaded `.exe` file.
+
+    4. **Follow setup instructions**:
+
+        * Accept the license agreement.
+        * Choose install location.
+        * **Optional**: Check boxes for “Add to PATH”, “Add ‘Open with Code’ to context menu”.
+
+    5. **Click ‘Install’**, then **‘Finish’**.
+
+    6. **Launch VS Code**:
+   Use the Start menu or desktop shortcut.
 
 1. **Create or Clone a Git Repository**
+
+    Open Terminal in VS Code (ctrl+`) and execute below commands:
 
    ```bash
    git clone https://github.com/your-username/snowflake-dwh-queries.git
    cd snowflake-dwh-queries
    ```
 
-2. **Open the project in VS Code**
-
-   ```bash
-   code .
-   ```
-
-3. **Initialize Git (if not already done)**
-
-   ```bash
-   git init
-   ```
-
-4. **Create folder structure**
+1. **Create folder structure**
 
    ```
    mkdir queries
@@ -144,3 +155,66 @@ snowflake-dwh-queries/
 │   └── ...
 └── README.md              # This documentation
 ```
+## Use Cases of Version Control
+
+### 1. **Version Control for DWH Logic**
+
+Track changes to:
+
+* DDL scripts (create/alter tables, views)
+* DML scripts (insert/update/delete)
+* Business logic (stored procedures, UDFs, views)
+* Comment history, rollback, and code reviews
+
+---
+
+### 2. **Team Collaboration**
+
+* Collaborate on query development using Git branches and pull requests
+* Perform peer code reviews for data quality and logic validation
+* Enforce standards with pre-commit hooks or linters
+
+---
+
+### 3. **Release Management / CI-CD**
+
+* Automate deployment of SQL changes via Git workflows (e.g., GitHub Actions, Azure DevOps)
+* Use tools like **SchemaChange**, **Liquibase**, or **Flyway** for managing schema migrations
+* Tag and release versions of your data models
+
+---
+
+### 4. **Development-Test-Prod Promotion**
+
+* Maintain separate folders or branches for dev, staging, and production environments
+* Use environment-specific Snowflake connections in `.toml` profiles
+* Automate promotion using scripts
+
+---
+
+### 5. **Metadata & Data Lineage Tracking**
+
+* Document table-level metadata
+* Use consistent naming and folder conventions
+* Integrate with data catalog tools (e.g., Alation, Atlan) using SQL codebase
+
+---
+
+### 6. **Audit & Compliance**
+
+* Maintain audit trails of who changed what, when, and why
+* Prove compliance with change management policies in regulated environments (e.g., HIPAA, GDPR, SOX)
+
+---
+
+### 7. **Template and Boilerplate Scripts**
+
+* Share reusable SQL templates for creating standard tables, SCD patterns, CDC patterns, etc.
+* Onboard new developers with starter kits
+
+---
+
+### 8. **Testing SQL Logic**
+
+* Store test datasets as insert scripts
+* Write SQL unit tests using tools like [dbt tests](https://docs.getdbt.com/docs/build/tests) or manual assertions
